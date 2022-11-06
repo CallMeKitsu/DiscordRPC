@@ -80,6 +80,10 @@ body {
   border-radius: 10px;
 }
 
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
 div.status {
 
   position: relative;
