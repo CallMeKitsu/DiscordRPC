@@ -15,41 +15,52 @@ body {
 
 #main {
     position: absolute;
-    top: 30px;
+    top: 40px;
     left: 70px;
-    background: var(--darker);
-    height: calc(100% - 30px);
+    background: var(--middle);
+    height: calc(100% - 40px);
     width: calc(100% - 70px);
     border-top-left-radius: 10px;
 }
 
 #menu {
     position: fixed;
-    top: 70px;
+    top: 40px;
     left: 0px;
     height: 100%;
     width: 70px;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-left: 10px;
 }
 
 #menu img {
     width: 50px;
     border-radius: 50%;
+    transition: all 150ms ease;
+}
+
+#menu img:hover {
+    border-radius: 35%;
 }
 
 #wrapper {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 10px;
     padding: 50px;
+    height: calc(100% - 100px);
+    width: fit-content;
+    background: var(--darker);
+    border-top-left-radius: 10px;
 }
 
 div.status {
     flex: 0 0 20%;
-    width: 330px;
+    width: 375px;
     height: fit-content;
+    min-height: 128px;
     border-radius: 4px;
     padding: 25px;
     background: var(--darker);

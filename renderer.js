@@ -8,7 +8,7 @@ bc.onmessage = (event) => {
         let name = status.name
         let ID = status.appID
         let state = status.state
-        let details = state.details
+        let details = status.details
 
         let assets = JSON.parse(get(`https://discordapp.com/api/oauth2/applications/${ID}/assets`))
         
@@ -27,9 +27,9 @@ bc.onmessage = (event) => {
                 <img class="small" src="${small}" title="${small_text}">
             </div>
             <div class="content">
+                <span class="name">${name}</span>
                 <span class="state">${state}</span>
                 <span class="details">${details}</span>
-                <span class="name">${name}</span>:<span class="id">${ID}</span>
             </div>
         </div>
         `
