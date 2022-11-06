@@ -1,0 +1,103 @@
+* {
+    font-family: "Poppins";
+    --darkest: #202225;
+    --darker: #2F3136;
+    --dimmer: #36393F;
+    --middle: #36393F;
+    --lighter: #40444B;
+    --lightest: #A3A692;
+}
+
+body {
+    background: var(--darkest);
+    color: white;
+}
+
+#main {
+    position: absolute;
+    top: 30px;
+    left: 70px;
+    background: var(--darker);
+    height: calc(100% - 30px);
+    width: calc(100% - 70px);
+    border-top-left-radius: 10px;
+}
+
+#menu {
+    position: fixed;
+    top: 70px;
+    left: 0px;
+    height: 100%;
+    width: 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#menu img {
+    width: 50px;
+    border-radius: 50%;
+}
+
+#wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 50px;
+}
+
+div.status {
+    flex: 0 0 20%;
+    width: 330px;
+    height: fit-content;
+    border-radius: 4px;
+    padding: 25px;
+    background: var(--darker);
+}
+
+div.status:hover {
+    background: var(--lighter);
+}
+
+#discord {
+    padding: 10px;
+    border-radius: 5px;
+    background: #5865F2;
+}
+
+.images {
+    position: relative;
+    width: 128px;
+}
+
+img.small, img.large {
+    position: absolute;
+}
+
+img.small {
+    width: 50px;
+    right: -17px;
+    top: 92px;
+    border-radius: 50%;
+}
+
+img.large {
+    width: 128px;
+    border-radius: 4px;
+}
+
+div.content {
+    margin-left: 160px;
+}
+
+div.content span {
+    display: block;
+}
+
+span {
+    font-weight: normal;
+}
+
+span.name {
+    font-weight: bolder;
+}
