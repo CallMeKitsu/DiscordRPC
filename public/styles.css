@@ -1,5 +1,11 @@
+@font-face {
+    font-family: "PoppinsReg";
+    src: url("../assets/Poppins-Regular.ttf");
+}
+
 * {
-    font-family: "Poppins";
+    font-family: "PoppinsReg";
+    font-weight: lighter;
     --darkest: #202225;
     --darker: #2F3136;
     --dimmer: #36393F;
@@ -110,5 +116,5 @@ span {
 }
 
 span.name {
-    font-weight: bolder;
+    font-family: "Poppins";
 }
