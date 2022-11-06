@@ -2,6 +2,7 @@ const bc = new BroadcastChannel("data");
 
 bc.onmessage = (event) => {
   let statuses = JSON.parse(event.data);
+  document.querySelector("#wrapper").innerHTML = ""
 
   for (let status of statuses) {
     let name = status.name;
@@ -22,7 +23,7 @@ bc.onmessage = (event) => {
     let small_text = assets.filter((asset) => asset.name === status.small_text);
 
     let HTML = `
-        <div class="status" onclick='select(\`${JSON.stringify(status)}\`)'>
+        <div class="status" onclick='select(\`${JSON.stringify(status).replaceAll("'", "")}\`)'>
             <!--<ion-icon class="close" onclick="close(this)" name="close"></ion-icon>-->
             <div class="images">
                 <img class="large" src="${cover}" title="${cover_text}">
@@ -30,8 +31,8 @@ bc.onmessage = (event) => {
             </div>
             <div class="content">
                 <span class="name">${name}</span>
-                <span class="state">${state}</span>
                 <span class="details">${details}</span>
+                <span class="state">${state}</span>
             </div>
         </div>
         `;
