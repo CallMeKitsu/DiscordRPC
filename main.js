@@ -1,4 +1,4 @@
-const {app, BrowserWindow} = require('electron')
+const { app, BrowserWindow} = require('electron')
 const path = require('path')
 
 function createWindow () {
@@ -23,4 +23,8 @@ app.whenReady().then(() => {
 
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit()
+})
+
+app.on('refresh', () => {
+  mainWindow.reload()
 })

@@ -1,5 +1,4 @@
 const bc = new BroadcastChannel("data");
-let ids = [];
 
 bc.onmessage = (event) => {
   let statuses = JSON.parse(event.data);
@@ -14,11 +13,9 @@ bc.onmessage = (event) => {
       get(`https://discordapp.com/api/oauth2/applications/${ID}/assets`)
     );
 
-    let cover = assets.filter((asset) => asset.name === status.large_image)[0]
-      .id;
+    let cover = assets.filter((asset) => asset.name === status.large_image)[0].id;
     cover = `https://cdn.discordapp.com/app-assets/${ID}/${cover}.png`;
-    let small = assets.filter((asset) => asset.name === status.small_image)[0]
-      .id;
+    let small = assets.filter((asset) => asset.name === status.small_image)[0].id;
     small = `https://cdn.discordapp.com/app-assets/${ID}/${small}.png`;
 
     let cover_text = assets.filter((asset) => asset.name === status.large_text);
@@ -50,6 +47,7 @@ function get(yourUrl) {
 }
 
 function select(str_status) {
+  document.querySelector('#logs').innerHTML += `Selected ${str_status.appID}<br/>`
   let status = JSON.parse(str_status);
 
   document.querySelector("#clientID").value = status.appID;
