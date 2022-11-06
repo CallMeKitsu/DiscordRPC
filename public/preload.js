@@ -6,21 +6,14 @@ const { Status } = require("../libs/status");
 let status = new Status();
 
 window.addEventListener("DOMContentLoaded", () => {
-  let statuses = [];
-  for (var filename of fs.readdirSync("./status")) {
-    if (!filename.endsWith(".json")) return console.log("not a JSON file");
-
-    statuses.push(JSON.parse(fs.readFileSync(`./status/${filename}`)));
-  }
-
-  const qr = new BroadcastChannel("data");
-  qr.postMessage(JSON.stringify(statuses));
+  sendData();
 
   document.querySelector("#run").addEventListener("click", (event) => {
     let clientID = document.querySelector("#clientID").value;
     if (!clientID) return alert("Le champ CLIENT_ID ne peut être vide !");
 
     status.fromDoc(document);
+    if(!status.test()) return alert(`Le CLIENT_ID fourni n'existe pas ou n'est pas reconnu.`)
 
     client.login({ clientId: clientID });
   });
@@ -30,13 +23,15 @@ window.addEventListener("DOMContentLoaded", () => {
     if (!clientID) return alert("Le champ CLIENT_ID ne peut être vide !");
 
     let data = new Status().fromDoc(document);
+    if(!data.test()) return alert(`Le CLIENT_ID fourni n'existe pas ou n'est pas reconnu.`)
     let object = data.body;
     object.appID = data.appID;
     fs.writeFileSync(
-      `${__dirname.replace('public', '')}status/${Date.now()}.json`,
+      `${__dirname.replace("public", "")}status/${Date.now()}.json`,
       JSON.stringify(object, null, "\t")
     );
-    alert('Configuration successfully saved !')
+    alert("Configuration successfully saved !");
+    sendData();
   });
 });
 
@@ -48,3 +43,15 @@ client.on("ready", () => {
 
   alert("status loaded !");
 });
+
+function sendData() {
+  let statuses = [];
+  for (var filename of fs.readdirSync("./status")) {
+    if (!filename.endsWith(".json")) return console.log("not a JSON file");
+
+    statuses.push(JSON.parse(fs.readFileSync(`./status/${filename}`)));
+  }
+
+  const qr = new BroadcastChannel("data");
+  qr.postMessage(JSON.stringify(statuses));
+}

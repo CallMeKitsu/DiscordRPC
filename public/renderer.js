@@ -10,9 +10,12 @@ bc.onmessage = (event) => {
     let state = status.state;
     let details = status.details;
 
-    let assets = JSON.parse(
-      get(`https://discordapp.com/api/oauth2/applications/${ID}/assets`)
-    );
+    let request = get(`https://discordapp.com/api/oauth2/applications/${ID}/assets`)
+    let assets = JSON.parse(request)
+    if(!Array.isArray(assets)) {
+      alert(`Un CLIENT_ID fourni n'existe pas ou n'est pas reconnu.`)
+      continue
+    } 
 
     let cover = assets.filter((asset) => asset.name === status.large_image)[0].id;
     cover = `https://cdn.discordapp.com/app-assets/${ID}/${cover}.png`;

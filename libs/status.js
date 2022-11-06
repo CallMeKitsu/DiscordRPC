@@ -15,10 +15,17 @@ class Status {
     return this
   }
 
-  fromJson(str_json) {
-    this.body = JSON.parse(json);
+  test() {
+    var Httpreq = new XMLHttpRequest();
+        Httpreq.open("GET", `https://discordapp.com/api/oauth2/applications/${this.appID}/assets`, false);
+        Httpreq.send(null);
+    let request = Httpreq.responseText
+    let assets = JSON.parse(request)
 
-    return this
+    if(!Array.isArray(assets)) {
+      return false
+    }
+    return true
   }
 
   fromDoc(document) {
