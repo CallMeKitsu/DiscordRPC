@@ -47,7 +47,6 @@ function get(yourUrl) {
 }
 
 function select(str_status) {
-  document.querySelector('#logs').innerHTML += `Selected ${str_status.appID}<br/>`
   let status = JSON.parse(str_status);
 
   document.querySelector("#clientID").value = status.appID;

@@ -11,10 +11,14 @@ class Status {
     };
 
     this.appID = ""
+
+    return this
   }
 
   fromJson(str_json) {
     this.body = JSON.parse(json);
+
+    return this
   }
 
   fromDoc(document) {
@@ -25,7 +29,8 @@ class Status {
     this.body.large_text = document.querySelector("#large_text").value;
     this.body.small_image = document.querySelector("#small_image").value;
     this.body.small_text = document.querySelector("#small_text").value;
-    console.log('------ REFORMED STATUS FROM DOCUMENT ------')
+
+    return this
   }
 
   toRpc() {
