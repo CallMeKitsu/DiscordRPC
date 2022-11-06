@@ -23,6 +23,7 @@ bc.onmessage = (event) => {
 
     let HTML = `
         <div class="status" onclick='select(\`${JSON.stringify(status)}\`)'>
+            <!--<ion-icon class="close" onclick="close(this)" name="close"></ion-icon>-->
             <div class="images">
                 <img class="large" src="${cover}" title="${cover_text}">
                 <img class="small" src="${small}" title="${small_text}">
