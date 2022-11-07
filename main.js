@@ -12,6 +12,8 @@ function createWindow () {
   })
 
   mainWindow.loadFile('./public/index.html')
+
+  mainWindow.webContents.setWindowOpenHandler()
 }
 
 app.whenReady().then(() => {
