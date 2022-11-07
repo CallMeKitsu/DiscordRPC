@@ -115,7 +115,6 @@ button {
   border: none;
   outline: none;
   color: white;
-  margin: 10px;
   cursor: pointer;
 }
 
@@ -170,7 +169,7 @@ span.name {
   top: 0px;
 }
 
-#detailed input {
+input {
   display: block;
   padding: 5px;
   background: var(--lighter);
@@ -178,7 +177,6 @@ span.name {
   border: none;
   outline: none;
   color: white;
-  margin: 10px;
   padding-left: 10px;
   padding-right: 10px;
 }
@@ -206,4 +204,15 @@ span.name {
 .vert-bttn:hover {
   color: white;
   background: var(--green);
+}
+
+button, input, h1 {
+  margin: 10px;
+}
+
+#buttons {
+  margin-left: 1000px;
+  padding: 50px;
+  position: absolute;
+  top: 0px;
 }

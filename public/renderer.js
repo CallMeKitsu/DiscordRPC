@@ -61,4 +61,21 @@ function select(str_status) {
   document.querySelector("#large_text").value = status.large_text;
   document.querySelector("#small_image").value = status.small_image;
   document.querySelector("#small_text").value = status.small_text;
+
+  if(status.buttons && status.buttons[0]) {
+    document.querySelector("#bttn-1-label").value = status.buttons[0].label;
+    document.querySelector("#bttn-1-link").value = status.buttons[0].url;
+  } else {
+    document.querySelector("#bttn-1-label").value = "";
+    document.querySelector("#bttn-1-link").value = "";
+  }
+  
+  if(status.buttons && status.buttons[1]) {
+    document.querySelector("#bttn-2-label").value = status.buttons[1].label;
+    document.querySelector("#bttn-2-link").value = status.buttons[1].url;
+  } else {
+    document.querySelector("#bttn-2-label").value = "";
+    document.querySelector("#bttn-2-link").value = "";
+  }
+  
 }
