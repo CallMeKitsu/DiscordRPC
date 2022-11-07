@@ -11,7 +11,7 @@ class Status {
     };
 
     this.appID = "";
-    this.name = '@Application'
+    this.name = "@Application";
 
     return this;
   }
@@ -41,21 +41,25 @@ class Status {
     this.body.large_text = document.querySelector("#large_text").value;
     this.body.small_image = document.querySelector("#small_image").value;
     this.body.small_text = document.querySelector("#small_text").value;
-    
-    if(document.querySelector("#appname").value.length > 0) {
-      this.name = document.querySelector("#appname").value
+
+    if (document.querySelector("#appname").value.length > 0) {
+      this.name = document.querySelector("#appname").value;
     }
 
-    this.body.buttons = [
-      {
+    this.body.buttons = [];
+
+    if (document.querySelector("#bttn-1-label").value.length > 0) {
+      this.body.buttons.push({
         label: document.querySelector("#bttn-1-label").value,
         url: document.querySelector("#bttn-1-link").value,
-      },
-      {
+      });
+    }
+    if (document.querySelector("#bttn-2-label").value.length > 0) {
+      this.body.buttons.push({
         label: document.querySelector("#bttn-2-label").value,
         url: document.querySelector("#bttn-2-link").value,
-      },
-    ];
+      });
+    }
 
     return this;
   }
@@ -108,16 +112,17 @@ class Status {
 
     if (this.body.buttons && this.body.buttons[0]) {
       if (this.body.buttons[0].label && this.body.buttons[0].url) {
-        res.activity.buttons = []
+        res.activity.buttons = [];
         res.activity.buttons.push({
           label: this.body.buttons[0].label,
-          url: this.body.buttons[0].url
-        })
-      } if (this.body.buttons[1].label && this.body.buttons[1].url) {
+          url: this.body.buttons[0].url,
+        });
+      }
+      if (this.body.buttons[1] && this.body.buttons[1].label && this.body.buttons[1].url) {
         res.activity.buttons.push({
           label: this.body.buttons[1].label,
-          url: this.body.buttons[1].url
-        })
+          url: this.body.buttons[1].url,
+        });
       }
     }
 
