@@ -25,6 +25,16 @@ bc.onmessage = (event) => {
     let cover_text = assets.filter((asset) => asset.name === status.large_text);
     let small_text = assets.filter((asset) => asset.name === status.small_text);
 
+    let button1 = ""
+    let button2 = ""
+
+    if(status.buttons.length > 0) {
+      button1 = `<button class="discord-bttn">${status.buttons[0].label}</button>`
+      if(status.buttons.length > 1) {
+        button2 = `<button class="discord-bttn">${status.buttons[1].label}</button>`
+      }
+    }
+
     let HTML = `
         <div class="status" onclick='select(\`${JSON.stringify(status).replaceAll("'", "")}\`)'>
             <!--<ion-icon class="close" onclick="close(this)" name="close"></ion-icon>-->
@@ -36,6 +46,8 @@ bc.onmessage = (event) => {
                 <span class="name">${name}</span>
                 <span class="details">${details}</span>
                 <span class="state">${state}</span>
+                ${button1}
+                ${button2}
             </div>
         </div>
         `;
