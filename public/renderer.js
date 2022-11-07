@@ -73,6 +73,7 @@ function select(str_status) {
   document.querySelector("#large_text").value = status.large_text;
   document.querySelector("#small_image").value = status.small_image;
   document.querySelector("#small_text").value = status.small_text;
+  document.querySelector("#appname").value = status.name;
 
   if(status.buttons && status.buttons[0]) {
     document.querySelector("#bttn-1-label").value = status.buttons[0].label;

@@ -19,6 +19,7 @@
 body {
   background: var(--darkest);
   color: white;
+  overflow-y: hidden;
 }
 
 #main {
@@ -226,4 +227,18 @@ button, input, h1 {
 
 .discord-bttn:hover {
   background: var(--purple);
+}
+
+#optional {
+  margin-left: 1000px;
+  padding: 50px;
+  position: absolute;
+  top: 250px;
+}
+
+#credits {
+  padding: 50px;
+  position: absolute;
+  top: 600px;
+  margin-left: 600px;
 }

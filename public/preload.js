@@ -26,6 +26,7 @@ window.addEventListener("DOMContentLoaded", () => {
     if(!data.test()) return alert(`Le CLIENT_ID fourni n'existe pas ou n'est pas reconnu.`)
     let object = data.body;
     object.appID = data.appID;
+    object.name = data.name;
     fs.writeFileSync(
       `${__dirname.replace("public", "")}status/${Date.now()}.json`,
       JSON.stringify(object, null, "\t")

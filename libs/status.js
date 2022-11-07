@@ -11,6 +11,7 @@ class Status {
     };
 
     this.appID = "";
+    this.name = '@Application'
 
     return this;
   }
@@ -40,6 +41,10 @@ class Status {
     this.body.large_text = document.querySelector("#large_text").value;
     this.body.small_image = document.querySelector("#small_image").value;
     this.body.small_text = document.querySelector("#small_text").value;
+    
+    if(document.querySelector("#appname").value.length > 0) {
+      this.name = document.querySelector("#appname").value
+    }
 
     this.body.buttons = [
       {
