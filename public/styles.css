@@ -240,6 +240,7 @@ button, input, h1 {
 }
 
 #credits {
+  color: var(--lightest);
   padding: 50px;
   position: absolute;
   top: 600px;
