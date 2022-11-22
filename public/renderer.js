@@ -8,6 +8,11 @@ bc.onmessage = (event) => {
 };
 
 function displayCustomStatuses(statuses) {
+  for (let field of document.getElementsByClassName("bttn-selected")) {
+    field.classList.remove("bttn-selected");
+  }
+
+  document.querySelector('#custom').classList.add('bttn-selected')
 
   document.querySelector("#wrapper").innerHTML = "";
 
@@ -70,6 +75,13 @@ function displayCustomStatuses(statuses) {
 }
 
 function displayPresetStatuses() {
+
+  for (let field of document.getElementsByClassName("bttn-selected")) {
+    field.classList.remove("bttn-selected");
+  }
+
+  document.querySelector('#presets').classList.add('bttn-selected')
+
   document.querySelector("#wrapper").innerHTML = "";
   let presets = [{name: "BeatStars", appID: "1000370452302155867"}]
   let html = ``

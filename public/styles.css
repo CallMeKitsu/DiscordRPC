@@ -204,7 +204,10 @@ input {
   transition: all 150ms ease;
 }
 
-#menu img:hover, .vert-bttn:hover, .prpl-bttn:hover {
+#menu img:hover, 
+.vert-bttn:hover, 
+.prpl-bttn:hover,
+.bttn-selected {
   border-radius: 35%;
 }
 
@@ -213,12 +216,12 @@ input {
   margin-top: 13px;
 }
 
-.vert-bttn:hover {
+.vert-bttn:hover, .vert-bttn.bttn-selected {
   color: white;
   background: var(--green);
 }
 
-.prpl-bttn:hover {
+.prpl-bttn:hover, .prpl-bttn.bttn-selected {
   color: white;
   background: var(--purple);
 }
