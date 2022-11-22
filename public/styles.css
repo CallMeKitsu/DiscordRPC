@@ -166,6 +166,7 @@ span {
 
 span.name {
   font-family: "Poppins";
+  font-weight: bold;
 }
 
 #detailed {
