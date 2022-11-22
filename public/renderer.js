@@ -8,6 +8,7 @@ bc.onmessage = (event) => {
 };
 
 function displayCustomStatuses(statuses) {
+
   document.querySelector("#wrapper").innerHTML = "";
 
   for (let status of statuses) {
@@ -70,6 +71,33 @@ function displayCustomStatuses(statuses) {
 
 function displayPresetStatuses() {
   document.querySelector("#wrapper").innerHTML = "";
+  let presets = [{name: "BeatStars", appID: "1000370452302155867"}]
+  let html = ``
+
+  for (let preset of presets) {
+    let assets = JSON.parse(get(`https://discordapp.com/api/oauth2/applications/${preset.appID}/assets`))
+    
+    if (!Array.isArray(assets)) {
+      console.log(`Un CLIENT_ID fourni n'existe pas ou n'est pas reconnu.`);
+      continue;
+    }
+
+    let str_assets = ''
+
+    for(let asset of assets) {
+      str_assets += `<img class="asset" src="https://cdn.discordapp.com/app-assets/${preset.appID}/${asset.id}.png" title="${asset.name}">`;  
+    }
+
+    html += `<div class="status" onclick='use( \`${JSON.stringify(preset)}\`, this )'>
+      <span class="name">${preset.name}</span>
+      <div class="assets" style="overflow: scroll-x">
+        ${str_assets}
+      </div>
+    </div>`
+  }
+
+  document.querySelector("#wrapper").innerHTML = html
+
 }
 
 function get(yourUrl) {
@@ -111,4 +139,16 @@ function select(str_status, element) {
     document.querySelector("#bttn-2-label").value = "";
     document.querySelector("#bttn-2-link").value = "";
   }
+}
+
+function use(str_preset, element) {
+  for (let field of document.getElementsByClassName("selected")) {
+    field.classList.remove("selected");
+  }
+
+  let status = JSON.parse(str_preset);
+  element.classList.add("selected");
+
+  document.querySelector("#clientID").value = status.appID;
+  document.querySelector("#appname").value = status.name;
 }
