@@ -87,7 +87,6 @@ body {
 }
 
 div.status {
-
   position: relative;
   flex: 0 0 20%;
   width: 375px;
@@ -101,6 +100,10 @@ div.status {
 
 div.status:hover {
   background: var(--lighter);
+}
+
+.selected {
+  background: var(--lighter) !important;
 }
 
 .close {

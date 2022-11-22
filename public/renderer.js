@@ -36,7 +36,7 @@ bc.onmessage = (event) => {
     }
 
     let HTML = `
-        <div class="status" onclick='select(\`${JSON.stringify(status).replaceAll("'", "")}\`)'>
+        <div class="status" onclick='select(\`${JSON.stringify(status).replaceAll("'", "")}\`, this)'>
             <!--<ion-icon class="close" onclick="close(this)" name="close"></ion-icon>-->
             <div class="images">
                 <img class="large" src="${cover}" title="${cover_text}">
@@ -63,8 +63,14 @@ function get(yourUrl) {
   return Httpreq.responseText;
 }
 
-function select(str_status) {
+function select(str_status, element) {
+
+  for(let field of document.getElementsByClassName('selected')) {
+    field.classList.remove('selected')
+  }
+
   let status = JSON.parse(str_status);
+  element.classList.add('selected')
 
   document.querySelector("#clientID").value = status.appID;
   document.querySelector("#state").value = status.state;
