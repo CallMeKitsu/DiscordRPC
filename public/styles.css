@@ -44,27 +44,17 @@ body {
   margin-left: 10px;
 }
 
-#menu img, .vert-bttn {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  transition: all 150ms ease;
-}
-
-#menu img:hover, .vert-bttn:hover {
-  border-radius: 35%;
-}
-
 #wrapper {
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding: 50px;
   height: calc(100% - 100px);
-  width: fit-content;
+  width: 425px;
   background: var(--darker);
   border-top-left-radius: 10px;
   overflow: scroll;
+  transition: all 1s ease;
 }
 
 ::-webkit-scrollbar {
@@ -201,16 +191,40 @@ input {
   background: var(--darker);
   text-align: center;
   color: var(--green);
+  cursor: pointer;
 }
 
-.vert-bttn ion-icon {
+.prpl-bttn {
+  background: var(--darker);
+  text-align: center;
+  color: white;
+  cursor: pointer;
+}
+
+#menu img, .vert-bttn, .prpl-bttn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  transition: all 150ms ease;
+}
+
+#menu img:hover, .vert-bttn:hover, .prpl-bttn:hover {
+  border-radius: 35%;
+}
+
+.vert-bttn ion-icon, .prpl-bttn ion-icon {
   font-size: 1.5em;
-  margin-top: 12px;
+  margin-top: 13px;
 }
 
 .vert-bttn:hover {
   color: white;
   background: var(--green);
+}
+
+.prpl-bttn:hover {
+  color: white;
+  background: var(--purple);
 }
 
 button, input, h1 {

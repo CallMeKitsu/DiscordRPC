@@ -1,8 +1,14 @@
 const bc = new BroadcastChannel("data");
+let CACHE_CUSTOM = {}
 
 bc.onmessage = (event) => {
   let statuses = JSON.parse(event.data);
-  document.querySelector("#wrapper").innerHTML = ""
+  CACHE_CUSTOM = statuses
+  displayCustomStatuses(statuses);
+};
+
+function displayCustomStatuses(statuses) {
+  document.querySelector("#wrapper").innerHTML = "";
 
   for (let status of statuses) {
     let name = status.name;
@@ -10,33 +16,39 @@ bc.onmessage = (event) => {
     let state = status.state;
     let details = status.details;
 
-    let request = get(`https://discordapp.com/api/oauth2/applications/${ID}/assets`)
-    let assets = JSON.parse(request)
-    if(!Array.isArray(assets)) {
-      alert(`Un CLIENT_ID fourni n'existe pas ou n'est pas reconnu.`)
-      continue
-    } 
+    let request = get(
+      `https://discordapp.com/api/oauth2/applications/${ID}/assets`
+    );
+    let assets = JSON.parse(request);
+    if (!Array.isArray(assets)) {
+      alert(`Un CLIENT_ID fourni n'existe pas ou n'est pas reconnu.`);
+      continue;
+    }
 
-    let cover = assets.filter((asset) => asset.name === status.large_image)[0].id;
+    let cover = assets.filter((asset) => asset.name === status.large_image)[0]
+      .id;
     cover = `https://cdn.discordapp.com/app-assets/${ID}/${cover}.png`;
-    let small = assets.filter((asset) => asset.name === status.small_image)[0].id;
+    let small = assets.filter((asset) => asset.name === status.small_image)[0]
+      .id;
     small = `https://cdn.discordapp.com/app-assets/${ID}/${small}.png`;
 
     let cover_text = assets.filter((asset) => asset.name === status.large_text);
     let small_text = assets.filter((asset) => asset.name === status.small_text);
 
-    let button1 = ""
-    let button2 = ""
+    let button1 = "";
+    let button2 = "";
 
-    if(status.buttons.length > 0) {
-      button1 = `<button class="discord-bttn">${status.buttons[0].label}</button>`
-      if(status.buttons.length > 1) {
-        button2 = `<button class="discord-bttn">${status.buttons[1].label}</button>`
+    if (status.buttons.length > 0) {
+      button1 = `<button class="discord-bttn">${status.buttons[0].label}</button>`;
+      if (status.buttons.length > 1) {
+        button2 = `<button class="discord-bttn">${status.buttons[1].label}</button>`;
       }
     }
 
     let HTML = `
-        <div class="status" onclick='select(\`${JSON.stringify(status).replaceAll("'", "")}\`, this)'>
+        <div class="status" onclick='select(\`${JSON.stringify(
+          status
+        ).replaceAll("'", "")}\`, this)'>
             <!--<ion-icon class="close" onclick="close(this)" name="close"></ion-icon>-->
             <div class="images">
                 <img class="large" src="${cover}" title="${cover_text}">
@@ -54,7 +66,11 @@ bc.onmessage = (event) => {
 
     document.querySelector("#wrapper").innerHTML += HTML;
   }
-};
+}
+
+function displayPresetStatuses() {
+  document.querySelector("#wrapper").innerHTML = "";
+}
 
 function get(yourUrl) {
   var Httpreq = new XMLHttpRequest();
@@ -64,13 +80,12 @@ function get(yourUrl) {
 }
 
 function select(str_status, element) {
-
-  for(let field of document.getElementsByClassName('selected')) {
-    field.classList.remove('selected')
+  for (let field of document.getElementsByClassName("selected")) {
+    field.classList.remove("selected");
   }
 
   let status = JSON.parse(str_status);
-  element.classList.add('selected')
+  element.classList.add("selected");
 
   document.querySelector("#clientID").value = status.appID;
   document.querySelector("#state").value = status.state;
@@ -81,20 +96,19 @@ function select(str_status, element) {
   document.querySelector("#small_text").value = status.small_text;
   document.querySelector("#appname").value = status.name;
 
-  if(status.buttons && status.buttons[0]) {
+  if (status.buttons && status.buttons[0]) {
     document.querySelector("#bttn-1-label").value = status.buttons[0].label;
     document.querySelector("#bttn-1-link").value = status.buttons[0].url;
   } else {
     document.querySelector("#bttn-1-label").value = "";
     document.querySelector("#bttn-1-link").value = "";
   }
-  
-  if(status.buttons && status.buttons[1]) {
+
+  if (status.buttons && status.buttons[1]) {
     document.querySelector("#bttn-2-label").value = status.buttons[1].label;
     document.querySelector("#bttn-2-link").value = status.buttons[1].url;
   } else {
     document.querySelector("#bttn-2-label").value = "";
     document.querySelector("#bttn-2-link").value = "";
   }
-  
 }

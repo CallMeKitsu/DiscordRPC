@@ -9,9 +9,16 @@
   <body>
     Discord
     <div id="menu">
-      <img src="https://cdn.discordapp.com/attachments/796407116839518228/1038791035381350460/ez.png">
+      <div id="custom" class="prpl-bttn">
+        <ion-icon name="logo-discord"
+        onclick="displayCustomStatuses(CACHE_CUSTOM)"></ion-icon>
+      </div>
       <div id="save" class="vert-bttn">
         <ion-icon name="save"></ion-icon>
+      </div>
+      <div id="presets" class="vert-bttn">
+        <ion-icon name="compass"
+        onclick="displayPresetStatuses()"></ion-icon>
       </div>
       <div id="newapp" class="vert-bttn">
         <ion-icon name="add"
