@@ -8,7 +8,8 @@ function createWindow () {
     minWidth: 1050,
     webPreferences: {
       preload: path.join(__dirname, './public/preload.js')
-    }
+    },
+    autoHideMenuBar: true
   })
 
   mainWindow.loadFile('./public/index.html')
