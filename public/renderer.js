@@ -16,6 +16,13 @@ function displayCustomStatuses(statuses) {
 
   document.querySelector("#wrapper").innerHTML = "";
 
+  if(statuses.length == 0) {
+    document.querySelector("#wrapper").innerHTML += `
+    <h1>Saved Statuses</h1>
+    <p>Create a custom status by entering data in the right section and save it here by clicking the <ion-icon name='save'></ion-icon> button, in the right vertical menu !</p>`
+    return
+  }
+
   for (let status of statuses) {
     let name = status.name;
     let ID = status.appID;
@@ -70,7 +77,7 @@ function displayCustomStatuses(statuses) {
         </div>
         `;
 
-    document.querySelector("#wrapper").innerHTML += HTML;
+    document.querySelector("#wrapper").innerHTML += "<h1>Saved Statuses</h1>" + HTML;
   }
 }
 
@@ -108,7 +115,7 @@ function displayPresetStatuses() {
     </div>`
   }
 
-  document.querySelector("#wrapper").innerHTML = html
+  document.querySelector("#wrapper").innerHTML = "<h1>Public Applications</h1>" + html
 
 }
 

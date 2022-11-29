@@ -1,5 +1,7 @@
 const fs = require("fs");
 const rpc = require("discord-rpc");
+const path = require('path');
+
 let client = new rpc.Client({ transport: "ipc" });
 const { Status } = require("../libs/status");
 
@@ -10,10 +12,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
   document.querySelector("#run").addEventListener("click", (event) => {
     let clientID = document.querySelector("#clientID").value;
-    if (!clientID) return alert("Le champ CLIENT_ID ne peut être vide !");
+    if (!clientID) return alert("The field CLIENT_ID can't be empty !");
 
     status.fromDoc(document);
-    if(!status.test()) return alert(`Le CLIENT_ID fourni n'existe pas ou n'est pas reconnu.`)
+    if(!status.test()) return alert(`The entered CLIENT_ID doesn't exist or isn't recognized.`)
 
     client.login({ clientId: clientID });
   });
@@ -23,7 +25,7 @@ window.addEventListener("DOMContentLoaded", () => {
     if (!clientID) return alert("Le champ CLIENT_ID ne peut être vide !");
 
     let data = new Status().fromDoc(document);
-    if(!data.test()) return alert(`Le CLIENT_ID fourni n'existe pas ou n'est pas reconnu.`)
+    if(!data.test()) return alert(`The entered CLIENT_ID doesn't exist or isn't recognized.`)
     let object = data.body;
     object.appID = data.appID;
     object.name = data.name;
@@ -47,10 +49,10 @@ client.on("ready", () => {
 
 function sendData() {
   let statuses = [];
-  for (var filename of fs.readdirSync("./status")) {
+  for (var filename of fs.readdirSync(path.join(__dirname, "../status"))) {
     if (!filename.endsWith(".json")) return console.log("not a JSON file");
 
-    statuses.push(JSON.parse(fs.readFileSync(`./status/${filename}`)));
+    statuses.push(JSON.parse(fs.readFileSync( path.join(__dirname, `../status/${filename}`))));
   }
 
   const qr = new BroadcastChannel("data");
