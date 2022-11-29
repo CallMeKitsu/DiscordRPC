@@ -77,7 +77,7 @@ function displayCustomStatuses(statuses) {
         </div>
         `;
 
-    document.querySelector("#wrapper").innerHTML += "<h1>Saved Statuses</h1>" + HTML;
+    document.querySelector("#wrapper").innerHTML += HTML;
   }
 }
 
@@ -115,8 +115,28 @@ function displayPresetStatuses() {
     </div>`
   }
 
-  document.querySelector("#wrapper").innerHTML = "<h1>Public Applications</h1>" + html
+  document.querySelector("#wrapper").innerHTML = html
 
+}
+
+function displayDocs() {
+  for (let field of document.getElementsByClassName("bttn-selected")) {
+    field.classList.remove("bttn-selected");
+  }
+
+  document.querySelector('#docs').classList.add('bttn-selected')
+
+  document.querySelector("#wrapper").innerHTML = `
+  <h1>Documentation</h1>
+  <h3>What is the CLIENT_ID ?</h3>
+  <p>It refers to the id of a Discord Application. You can create one by clicking the <ion-icon name="add"></ion-icon> button. When it's done, click on "COPY" under "Application ID".</p>
+  <h3>How to use the public apps ?</h3>
+  <p>Click on the <ion-icon name="compass"></ion-icon> button and select the public app you want to use. It will put for you the ID of the app into the CLIENT_ID field. Then, hover an asset to know its name. It's this name that you will have to type into the "large_image" or "small_image" fields.</p>
+  <h3>Why can't I change the app name ?</h3>
+  <p>The app name is managed directly by the discord API. It means that you must go on the Discord-Dev portal to rename your app. When you use a public application, you can't change its name.</p>
+  <h3>How to upload assets ?</h3>
+  <p>On the discord dev portal (<ion-icon name="add"></ion-icon>) dashboard, select "rich presence" and then "art assets".</p>
+  `;
 }
 
 function get(yourUrl) {

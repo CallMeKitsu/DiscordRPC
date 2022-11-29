@@ -13,6 +13,10 @@
         <ion-icon name="logo-discord"
         onclick="displayCustomStatuses(CACHE_CUSTOM)"></ion-icon>
       </div>
+      <div id="docs" class="vert-bttn">
+        <ion-icon name="document-text"
+        onclick="displayDocs()"></ion-icon>
+      </div>
       <div id="save" class="vert-bttn">
         <ion-icon name="save"></ion-icon>
       </div>
@@ -28,7 +32,7 @@
     <div id="main">
       <div id="wrapper"></div>
       <div id="detailed">
-        <h1>Application</h1>
+        <h1 class="title">Application</h1>
         <input id="clientID" type="text" placeholder="Client ID"/>
         <input id="details" type="text" placeholder="Details"/>
         <input id="state" type="text" placeholder="State"/>
@@ -39,14 +43,14 @@
         <button id="run">SET PRESENCE</button>
       </div>
       <div id="buttons">
-        <h1>Links</h1>
+        <h1 class="title">Links</h1>
         <input id="bttn-1-label" type="text" placeholder="button1_label"/>
         <input id="bttn-1-link" type="text" placeholder="button1_link"/>
         <input id="bttn-2-label" type="text" placeholder="button2_label"/>
         <input id="bttn-2-link" type="text" placeholder="button2_link"/>
       </div>
       <div id="optional">
-        <h1 style="display: inline;">Name</h1><span>*</span>
+        <h1 class="title" style="display: inline;">Name</h1><span>*</span>
         <input id="appname" type="text" placeholder="app_name"/>
       </div>
       <div id="credits">
