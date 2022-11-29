@@ -90,7 +90,7 @@ function displayPresetStatuses() {
   document.querySelector('#presets').classList.add('bttn-selected')
 
   document.querySelector("#wrapper").innerHTML = "";
-  let presets = [{name: "BeatStars", appID: "1000370452302155867"}]
+  let presets = JSON.parse(get('https://callmekitsu.com/h/drpc.json'))
   let html = ``
 
   for (let preset of presets) {
