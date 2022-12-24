@@ -7,31 +7,27 @@
     <title>Discord RPC Client - CallMeKitsu.</title>
   </head>
   <body>
-    Discord
+    Discord RPC Client - By CallMeKitsu.
     <div id="menu">
-      <div id="custom" class="prpl-bttn">
-        <span class="tooltip">Mes statuts</span>
-        <ion-icon name="logo-discord"
-        onclick="displayCustomStatuses(CACHE_CUSTOM)"></ion-icon>
+      <div id="custom" class="prpl-bttn" onclick="displayCustomStatuses(CACHE_CUSTOM)">
+        <span class="tooltip">My statuses</span>
+        <ion-icon name="logo-discord"></ion-icon>
       </div>
-      <div id="docs" class="vert-bttn">
+      <div id="docs" class="vert-bttn" onclick="displayDocs()">
         <span class="tooltip">Documentation</span>
-        <ion-icon name="document-text"
-        onclick="displayDocs()"></ion-icon>
+        <ion-icon name="document-text"></ion-icon>
       </div>
       <div id="save" class="vert-bttn">
-        <span class="tooltip">Sauvegarder</span>
+        <span class="tooltip">Save this</span>
         <ion-icon name="save"></ion-icon>
       </div>
-      <div id="presets" class="vert-bttn">
+      <div id="presets" class="vert-bttn" onclick="displayPresetStatuses()">
         <span class="tooltip">Presets</span>
-        <ion-icon name="compass"
-        onclick="displayPresetStatuses()"></ion-icon>
+        <ion-icon name="compass"></ion-icon>
       </div>
-      <div id="newapp" class="vert-bttn">
-        <span class="tooltip">Créer</span>
-        <ion-icon name="add"
-        onclick="window.open('https://discord.com/developers/applications')"></ion-icon>
+      <div id="newapp" class="vert-bttn" onclick="window.open('https://discord.com/developers/applications')">
+        <span class="tooltip">Create</span>
+        <ion-icon name="add"></ion-icon>
       </div>
     </div>
     <div id="main">
