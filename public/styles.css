@@ -33,7 +33,7 @@ body {
 }
 
 #menu {
-  position: fixed;
+  position: absolute;
   top: 40px;
   left: 0px;
   height: 100%;
@@ -55,6 +55,7 @@ body {
   border-top-left-radius: 10px;
   overflow: scroll;
   transition: all 1s ease;
+  z-index: 2;
 }
 
 ::-webkit-scrollbar {
@@ -188,6 +189,7 @@ input {
   text-align: center;
   color: var(--green);
   cursor: pointer;
+  position: relative;
 }
 
 .prpl-bttn {
@@ -195,6 +197,7 @@ input {
   text-align: center;
   color: white;
   cursor: pointer;
+  position: relative;
 }
 
 #menu img, .vert-bttn, .prpl-bttn {
@@ -279,4 +282,37 @@ h3 {
   margin: 0px;
   padding-left: 15px;
   border-left: 2px solid grey;
+}
+
+.vert-bttn .tooltip, .prpl-bttn .tooltip {
+  visibility: hidden;
+  width: fit-content;
+  background-color: var(--darkest);
+  color: #fff;
+  white-space: nowrap;
+  
+  text-align: left;
+  padding: 5px 10px;
+  border-radius: 6px;
+
+  position: absolute;
+  z-index: 99;
+  left: 70px;
+  top: 7px;
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color:  transparent var(--darkest) transparent transparent;
+}
+
+.prpl-bttn:hover .tooltip, .vert-bttn:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
 }
